@@ -1,10 +1,19 @@
+
 class EmployeeWage {
+
+	public static int employeeWage() {
+		int wagePerHour=20;
+      int fullDayHour=8;
+		return wagePerHour * fullDayHour;
+	}
 
    public static void employeeAttendance() {
       int isFullTime=1;
       int checkTime= (int)Math.floor(Math.random() * 10) % 2;
-      if(checkTime == isFullTime) 
-         System.out.println("Present");
+      if(checkTime == isFullTime) {
+         int wage = employeeWage();
+			System.out.println("Employee wage: "+wage);
+		}
       else
          System.out.println("Absent");
    }
