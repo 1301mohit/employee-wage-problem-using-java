@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.ArrayList;
+
 public class CompanyEmployeeWage {
 
 	private final String companyName;
@@ -6,6 +9,7 @@ public class CompanyEmployeeWage {
 	private final int partTimeHour;
 	private final int workingHourPerMonth;
 	private int totalEmpWage;
+	private List<Integer> listOfWage;
 
 	public CompanyEmployeeWage(String companyName, int wagePerHour, int fullTimeHour, int partTimeHour, int workingHourPerMonth) {
 		this.companyName = companyName;
@@ -13,6 +17,7 @@ public class CompanyEmployeeWage {
 		this.fullTimeHour = fullTimeHour;
 		this.partTimeHour = partTimeHour;
 		this.workingHourPerMonth = workingHourPerMonth;
+		listOfWage = new ArrayList<Integer>();
 	}
 
 	public String getCompanyName() {
@@ -37,6 +42,14 @@ public class CompanyEmployeeWage {
 
 	public void setTotalEmpWage(int totalEmpWage) {
 		this.totalEmpWage = totalEmpWage;
+	}
+
+	public void setListOfWage(List<Integer> listOfWage) {
+		this.listOfWage = listOfWage;
+	}
+
+	public List<Integer> getListOfWage() {
+		return this.listOfWage;
 	}
 
 	@Override
