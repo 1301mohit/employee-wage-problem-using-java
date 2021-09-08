@@ -7,13 +7,14 @@ class EmployeeWage {
 	}
 
    public static void employeeAttendance() {
-		int totalWage=0;
-		for(int day=1; day<=20; day++) {
+		int totalWage=0, totalHour=0;
+		int day=1;
+		while(day<=20 && totalHour<100) {
+			day++;
 			final int FULL_TIME=1;
       	final int PART_TIME=2;
 			int hour=0;
 			int checkTime= (int)Math.floor(Math.random() * 10) % 3;
-			System.out.println("Time: "+checkTime);
 			switch(checkTime) {
          case FULL_TIME:
             hour = 8;
@@ -25,9 +26,11 @@ class EmployeeWage {
             hour=0;
       	}
       	int wage = employeeWage(hour);
-			totalWage += wage; 
+			totalWage += wage;
+			totalHour += hour;
 		}
       System.out.println("Employee wage: "+totalWage);
+		System.out.println("Total hour: "+totalHour);
    }
 
    public static void main(String args[]) {
