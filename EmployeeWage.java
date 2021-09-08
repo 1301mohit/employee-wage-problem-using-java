@@ -1,25 +1,25 @@
+import java.util.List;
+import java.util.ArrayList;
 
 class EmployeeWage implements IEmployeeWage{
 
 	public static final int FULL_TIME=1;
 	public static final int PART_TIME=2;
 
-	private int numberOfCompany = 0;
-	private CompanyEmployeeWage[] companyEmployeeWageArray;
+	private List<CompanyEmployeeWage> companyEmployeeWageArray;
 
 	public EmployeeWage() {
-		companyEmployeeWageArray = new CompanyEmployeeWage[5];
+		companyEmployeeWageArray = new ArrayList<CompanyEmployeeWage>();
 	}
 
 	public void addCompanyEmployeeWage(String company, int wagePerHour, int fullTimeHour, int partTimeHour, int workingHourPerMonth) {
-		companyEmployeeWageArray[numberOfCompany] = new CompanyEmployeeWage(company, wagePerHour, fullTimeHour, partTimeHour, workingHourPerMonth);
-		numberOfCompany++;
+		companyEmployeeWageArray.add(new CompanyEmployeeWage(company, wagePerHour, fullTimeHour, partTimeHour, workingHourPerMonth));
 	}
 
 	public void computeEmployeeWage() {
-		for(int i=0; i<numberOfCompany; i++) {
-			int totalEmployeeWage = this.calculateTotalWage(companyEmployeeWageArray[i]);
-			System.out.println("Total employee wage for company "+companyEmployeeWageArray[i].getCompanyName() + " is " + totalEmployeeWage);
+		for(int i=0; i<companyEmployeeWageArray.size(); i++) {
+			int totalEmployeeWage = this.calculateTotalWage(companyEmployeeWageArray.get(i));
+			System.out.println("Total employee wage for company "+companyEmployeeWageArray.get(i).getCompanyName() + " is " + totalEmployeeWage);
 		}
 	}
 
