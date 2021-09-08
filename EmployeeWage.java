@@ -19,13 +19,15 @@ class EmployeeWage implements IEmployeeWage{
 	public void computeEmployeeWage() {
 		for(int i=0; i<companyEmployeeWageArray.size(); i++) {
 			int totalEmployeeWage = this.calculateTotalWage(companyEmployeeWageArray.get(i));
-			System.out.println("Total employee wage for company "+companyEmployeeWageArray.get(i).getCompanyName() + " is " + totalEmployeeWage);
+			System.out.println("List of wage and total wage of company "+companyEmployeeWageArray.get(i).getCompanyName());
+			System.out.println(companyEmployeeWageArray.get(i).getListOfWage());
+			System.out.println("Total employee wage for company "+companyEmployeeWageArray.get(i).getCompanyName() + " is " + totalEmployeeWage+"\n");
 		}
 	}
 
 	public static int calculateTotalWage(CompanyEmployeeWage companyEmployeeWage) {
-      int totalWage=0, totalHour=0;
-      int day=1;
+      int totalWage=0, totalHour=0, day=1;
+		List<Integer> employeeWageArray = new ArrayList<Integer>();
       while(day <= 20 && totalHour < companyEmployeeWage.getWorkingHourPerMonth()) { 
          day++;
          int hour=0;
@@ -41,14 +43,17 @@ class EmployeeWage implements IEmployeeWage{
             	hour=0;
          }
          int wage = companyEmployeeWage.getWagePerHour() * hour;
+			employeeWageArray.add(wage);
          totalWage += wage;
          totalHour += hour;
       }
+		employeeWageArray.add(totalWage);
+		companyEmployeeWage.setListOfWage(employeeWageArray);
 		return totalWage;
    }
 
    public static void main(String args[]) {
-		System.out.println("Welcome to employee wage problem");
+		System.out.println("Welcome to employee wage problem\n");
 		EmployeeWage employeeWage = new EmployeeWage();
 		employeeWage.addCompanyEmployeeWage("Dmart", 10, 8, 4, 100);
 		employeeWage.addCompanyEmployeeWage("Smart", 11, 9, 5, 110);
