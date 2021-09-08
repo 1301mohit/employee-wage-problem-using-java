@@ -25,6 +25,14 @@ class EmployeeWage implements IEmployeeWage{
 		}
 	}
 
+	public String getTotalWage(String companyName) {
+		for(int i=0; i<companyEmployeeWageArray.size(); i++) {
+			if(companyEmployeeWageArray.get(i).getCompanyName().equals(companyName))
+				return "Total employee wage for company "+ companyEmployeeWageArray.get(i).getCompanyName() + " is " + companyEmployeeWageArray.get(i).getTotalEmpWage();
+		}
+		return "Company not found";
+	}
+
 	public static int calculateTotalWage(CompanyEmployeeWage companyEmployeeWage) {
       int totalWage=0, totalHour=0, day=1;
 		List<Integer> employeeWageArray = new ArrayList<Integer>();
@@ -47,6 +55,7 @@ class EmployeeWage implements IEmployeeWage{
          totalWage += wage;
          totalHour += hour;
       }
+		companyEmployeeWage.setTotalEmpWage(totalWage);
 		employeeWageArray.add(totalWage);
 		companyEmployeeWage.setListOfWage(employeeWageArray);
 		return totalWage;
@@ -58,6 +67,7 @@ class EmployeeWage implements IEmployeeWage{
 		employeeWage.addCompanyEmployeeWage("Dmart", 10, 8, 4, 100);
 		employeeWage.addCompanyEmployeeWage("Smart", 11, 9, 5, 110);
 		employeeWage.computeEmployeeWage();
+		System.out.println(employeeWage.getTotalWage("Dmart"));
    }
 
 }

@@ -44,6 +44,10 @@ public class CompanyEmployeeWage {
 		this.totalEmpWage = totalEmpWage;
 	}
 
+	public int getTotalEmpWage() {
+		return this.totalEmpWage;
+	}
+
 	public void setListOfWage(List<Integer> listOfWage) {
 		this.listOfWage = listOfWage;
 	}
